@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Flinsley>
+  <Invoice>
+    <CustomerNo>20339921</CustomerNo>
+    <Project>OnSet</Project>
+    <ResourceType>Resource</ResourceType>
+    <ProductNumber>LYFTA</ProductNumber>
+    <Qty>3</Qty>
+    <Price>5900</Price>
+    <Discount>10</Discount>
+  </Invoice>
+</Flinsley>
