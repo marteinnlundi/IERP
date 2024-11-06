@@ -38,3 +38,8 @@ To import and view an invoice, follow these steps:
 6. Once the invoice is successfully imported, it should appear in the Sales Invoices list, ready for review.
 
 This process ensures that the invoice is correctly imported and accessible within the Sales Invoices list in Business Central.
+
+
+## TODO:
+[] Take a video of the usage showing that the project works
+[] Make sure the sale invoice actually gets added to the list
