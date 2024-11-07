@@ -1,10 +1,45 @@
 page 50123 "Invoice Import Page"
 {
+    Caption = 'Invoice Import Page';
     PageType = List;
-    SourceTable = "Flinsley Invoice Temp";
-    ApplicationArea = All;
     UsageCategory = Lists;
-
+    ApplicationArea = All;
+    SourceTable = "Flinsley Invoice Temp";
+    
+    layout
+    {
+        area(Content)
+        {
+            repeater(Group)
+            {
+                field("CustomerNo" ; Rec."CustomerNo")
+                {
+                    ApplicationArea = All;
+                }
+                field("Project"; Rec."Project")
+                {
+                    ApplicationArea = All;
+                }
+                field("ProductNumber"; Rec."ProductNumber")
+                {
+                    ApplicationArea = All;
+                }
+                field("Qty"; Rec."Qty")
+                {
+                    ApplicationArea = All;
+                }
+                field("Price"; Rec."Price")
+                {
+                    ApplicationArea = All;
+                }
+                field("Discount"; Rec."Discount")
+                {
+                    ApplicationArea = All;
+                }
+            }
+        }
+    }
+    
     actions
     {
         area(Processing)
@@ -13,6 +48,7 @@ page 50123 "Invoice Import Page"
             {
                 ApplicationArea = All;
                 Caption = 'Import Invoices';
+
                 trigger OnAction()
                 var
                     Processor: Codeunit "Invoice Processor";
@@ -21,31 +57,21 @@ page 50123 "Invoice Import Page"
                 end;
             }
 
-            action(CreateSalesInvoice)
+            action(DeleteAllInvoices)
             {
                 ApplicationArea = All;
-                Caption = 'Create Sales Invoice';
+                Caption = 'Delete All Invoices';
+
                 trigger OnAction()
                 var
-                    Processor: Codeunit "Invoice Processor";
+                    TempTable: Record "Flinsley Invoice Temp";
                 begin
-                    Processor.CreateSalesInvoice();
+                    begin
+                        TempTable.DeleteAll();
+                        Message('All invoices have been deleted from the temporary table.');
+                    end;
                 end;
             }
-
-            action(ProcessInvoices)
-            {
-                ApplicationArea = All;
-                Caption = 'Process Invoices';
-                trigger OnAction()
-                var
-                    Processor: Codeunit "Invoice Processor";
-                begin
-                    Processor.ImportInvoiceData();
-                    Processor.CreateSalesInvoice();
-                end;
-            }
-
         }
     }
 }
